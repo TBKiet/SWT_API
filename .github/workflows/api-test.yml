@@ -30,10 +30,8 @@ jobs:
       
     - name: Create reports directory
       run: mkdir -p 22127223_API_Products_Submission/reports
-      working-directory: 22127223_API_Products_Submission
       
     - name: Run API tests with Newman
-      working-directory: 22127223_API_Products_Submission
       run: |
         echo "🚀 Starting API Testing with Newman..."
         echo "Student ID: 22127223"
@@ -41,17 +39,17 @@ jobs:
         echo ""
         
         # Check if required files exist
-        if [ ! -f "collection.json" ]; then
+        if [ ! -f "22127223_API_Products_Submission/collection.json" ]; then
           echo "❌ Collection file not found"
           exit 1
         fi
         
-        if [ ! -f "environment.json" ]; then
+        if [ ! -f "22127223_API_Products_Submission/environment.json" ]; then
           echo "❌ Environment file not found"
           exit 1
         fi
         
-        if [ ! -f "user-accounts.csv" ]; then
+        if [ ! -f "22127223_API_Products_Submission/user-accounts.csv" ]; then
           echo "❌ CSV data file not found"
           exit 1
         fi
@@ -61,12 +59,12 @@ jobs:
         
         # Run Newman with collection, environment, and CSV data
         echo "📊 Running API tests with Newman..."
-        npx newman run collection.json \
-          --environment environment.json \
-          --iteration-data user-accounts.csv \
+        npx newman run 22127223_API_Products_Submission/collection.json \
+          --environment 22127223_API_Products_Submission/environment.json \
+          --iteration-data 22127223_API_Products_Submission/user-accounts.csv \
           --reporters cli,json,html \
-          --reporter-json-export reports/api-test-results.json \
-          --reporter-html-export reports/api-test-report.html \
+          --reporter-json-export 22127223_API_Products_Submission/reports/api-test-results.json \
+          --reporter-html-export 22127223_API_Products_Submission/reports/api-test-report.html \
           --bail
         
         # Check exit code
@@ -74,19 +72,19 @@ jobs:
           echo ""
           echo "✅ All tests passed successfully!"
           echo "📁 Test reports generated:"
-          echo "   - JSON: reports/api-test-results.json"
-          echo "   - HTML: reports/api-test-report.html"
+          echo "   - JSON: 22127223_API_Products_Submission/reports/api-test-results.json"
+          echo "   - HTML: 22127223_API_Products_Submission/reports/api-test-report.html"
         else
           echo ""
           echo "❌ Some tests failed. Check the reports for details."
           echo "📁 Test reports generated:"
-          echo "   - JSON: reports/api-test-results.json"
-          echo "   - HTML: reports/api-test-report.html"
+          echo "   - JSON: 22127223_API_Products_Submission/reports/api-test-results.json"
+          echo "   - HTML: 22127223_API_Products_Submission/reports/api-test-report.html"
         fi
         
         echo ""
         echo "🎯 Test execution completed!"
-        echo "📊 Reports available in the 'reports' directory"
+        echo "📊 Reports available in the '22127223_API_Products_Submission/reports' directory"
         
     - name: Upload test results as artifacts
       uses: actions/upload-artifact@v4
@@ -99,13 +97,12 @@ jobs:
         
     - name: Display test results
       if: always()
-      working-directory: 22127223_API_Products_Submission
       run: |
         echo "📊 Test Results Summary:"
-        if [ -f "reports/api-test-results.json" ]; then
+        if [ -f "22127223_API_Products_Submission/reports/api-test-results.json" ]; then
           echo "✅ Test reports generated successfully"
           echo "📁 Files available:"
-          ls -la reports/
+          ls -la 22127223_API_Products_Submission/reports/
         else
           echo "❌ No test reports found"
         fi 

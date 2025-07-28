@@ -1,0 +1,37 @@
+{
+  "name": "swt-api-testing",
+  "version": "1.0.0",
+  "description": "API Testing with AI Tools - Software Testing Course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "newman": "newman run",
+    "test:api": "npm run newman",
+    "install-newman": "npm install -g newman"
+  },
+  "keywords": [
+    "api-testing",
+    "newman",
+    "postman",
+    "software-testing",
+    "ci-cd"
+  ],
+  "author": "Student 22127223 & 22127321",
+  "license": "MIT",
+  "devDependencies": {
+    "newman": "^5.3.2"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TBKiet/SWT_API.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TBKiet/SWT_API/issues"
+  },
+  "homepage": "https://github.com/TBKiet/SWT_API#readme",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+} 

@@ -25,8 +25,8 @@ jobs:
         node-version: '18'
         cache: 'npm'
         
-    - name: Install Newman
-      run: npm install -g newman
+    - name: Install dependencies
+      run: npm ci
       
     - name: Create reports directory
       run: mkdir -p 22127321_API_Users_Submission/reports
@@ -61,7 +61,7 @@ jobs:
         
         # Run Newman with collection, environment, and CSV data
         echo "📊 Running API tests with Newman..."
-        newman run collection.json \
+        npx newman run collection.json \
           --environment environment.json \
           --iteration-data user-accounts.csv \
           --reporters cli,json,html \

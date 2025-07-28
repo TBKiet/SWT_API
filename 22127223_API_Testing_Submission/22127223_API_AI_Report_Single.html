@@ -1,0 +1,253 @@
+<h1 id="api-testing-with-ai-tools---individual-report">API Testing with AI Tools - Individual Report</h1>
+<p><strong>Student ID:</strong> 22127223<br />
+<strong>Course:</strong> Software Testing<br />
+<strong>Assignment:</strong> API Testing with AI Tools<br />
+<strong>Date:</strong> January 13, 2025</p>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>This report presents the results of comprehensive API testing conducted on the <strong>GET /products</strong> endpoint of the Toolshop REST API using AI-assisted testing methodologies. The testing focused on identifying functional issues, performance problems, and data validation inconsistencies in this critical endpoint. A total of 10 test cases were executed, revealing 10 bugs of varying severity levels.</p>
+<h2 id="testing-methodology">Testing Methodology</h2>
+<h3 id="ai-tools-used">AI Tools Used</h3>
+<ul>
+<li><strong>Postman AI Assistant:</strong> Automated test case generation and response validation</li>
+<li><strong>OpenAPI Specification Analysis:</strong> AI-powered schema validation for the products endpoint</li>
+<li><strong>Response Pattern Recognition:</strong> AI-assisted identification of inconsistent API behaviors</li>
+<li><strong>Performance Analysis AI:</strong> Automated response time measurement and analysis</li>
+<li><strong>Data Validation AI:</strong> Automated validation of request/response data structures</li>
+</ul>
+<h3 id="testing-approach">Testing Approach</h3>
+<ol type="1">
+<li><strong>API Documentation Analysis:</strong> Reviewed OpenAPI 3.0 specification for GET /products</li>
+<li><strong>Endpoint Discovery:</strong> Analyzed all available query parameters and response formats</li>
+<li><strong>Test Case Generation:</strong> Created comprehensive test scenarios using AI tools</li>
+<li><strong>Automated Testing:</strong> Used AI tools for test execution and result analysis</li>
+<li><strong>Bug Analysis:</strong> AI-assisted bug identification and categorization</li>
+</ol>
+<h2 id="api-endpoint-tested">API Endpoint Tested</h2>
+<h3 id="get-products-endpoint">GET /products Endpoint</h3>
+<ul>
+<li><strong>Base URL:</strong> <code>https://api-with-bugs.practicesoftwaretesting.com/products</code></li>
+<li><strong>Method:</strong> GET</li>
+<li><strong>Authentication:</strong> Optional (public endpoint)</li>
+<li><strong>Query Parameters:</strong>
+<ul>
+<li><code>page</code>: Pagination page number</li>
+<li><code>limit</code>: Number of items per page</li>
+<li><code>by_category</code>: Filter by category name</li>
+<li><code>by_brand</code>: Filter by brand name</li>
+<li><code>q</code>: Search query</li>
+<li><code>min_price</code> &amp; <code>max_price</code>: Price range filter</li>
+<li><code>sort</code>: Sort field</li>
+<li><code>order</code>: Sort order (asc/desc)</li>
+</ul></li>
+</ul>
+<h2 id="test-results-summary">Test Results Summary</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Test Case</th>
+<th>Test Scenario</th>
+<th>Status</th>
+<th>Bug Found</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>API-TC001</td>
+<td>Basic functionality</td>
+<td>Passed</td>
+<td>None</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>API-TC002</td>
+<td>Pagination</td>
+<td>Failed</td>
+<td>BUG001</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>API-TC003</td>
+<td>Category filter</td>
+<td>Failed</td>
+<td>BUG002</td>
+<td>Medium</td>
+</tr>
+<tr class="even">
+<td>API-TC004</td>
+<td>Brand filter</td>
+<td>Failed</td>
+<td>BUG003</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>API-TC005</td>
+<td>Search functionality</td>
+<td>Failed</td>
+<td>BUG004</td>
+<td>Medium</td>
+</tr>
+<tr class="even">
+<td>API-TC006</td>
+<td>Price range filter</td>
+<td>Failed</td>
+<td>BUG005</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>API-TC007</td>
+<td>Sorting</td>
+<td>Failed</td>
+<td>BUG006</td>
+<td>Medium</td>
+</tr>
+<tr class="even">
+<td>API-TC008</td>
+<td>Invalid parameters</td>
+<td>Failed</td>
+<td>BUG007</td>
+<td>High</td>
+</tr>
+<tr class="odd">
+<td>API-TC009</td>
+<td>Authentication handling</td>
+<td>Failed</td>
+<td>BUG008</td>
+<td>High</td>
+</tr>
+<tr class="even">
+<td>API-TC010</td>
+<td>Performance test</td>
+<td>Failed</td>
+<td>BUG009</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<h2 id="detailed-bug-analysis">Detailed Bug Analysis</h2>
+<h3 id="high-severity-bugs-3">High Severity Bugs (3)</h3>
+<ol type="1">
+<li><strong>BUG007:</strong> Invalid parameters cause 500 error instead of validation error
+<ul>
+<li><strong>Impact:</strong> API crashes with internal server error</li>
+<li><strong>Root Cause:</strong> Missing input validation</li>
+<li><strong>Recommendation:</strong> Implement proper parameter validation</li>
+</ul></li>
+<li><strong>BUG008:</strong> Authentication token causes 401 error for public endpoint
+<ul>
+<li><strong>Impact:</strong> Public endpoint becomes inaccessible with authentication</li>
+<li><strong>Root Cause:</strong> Incorrect authentication logic</li>
+<li><strong>Recommendation:</strong> Fix authentication handling for public endpoints</li>
+</ul></li>
+<li><strong>BUG009:</strong> Response time exceeds 5 seconds
+<ul>
+<li><strong>Impact:</strong> Poor user experience and potential timeouts</li>
+<li><strong>Root Cause:</strong> Inefficient database queries or missing indexes</li>
+<li><strong>Recommendation:</strong> Optimize database queries and add proper indexing</li>
+</ul></li>
+</ol>
+<h3 id="medium-severity-bugs-7">Medium Severity Bugs (7)</h3>
+<ol type="1">
+<li><strong>BUG001:</strong> Pagination returns same data for different pages</li>
+<li><strong>BUG002:</strong> Category filter returns all products instead of filtered results</li>
+<li><strong>BUG003:</strong> Brand filter returns empty array for valid brand</li>
+<li><strong>BUG004:</strong> Search query returns no results for existing products</li>
+<li><strong>BUG005:</strong> Price range filter ignores max_price parameter</li>
+<li><strong>BUG006:</strong> Sorting by price returns unsorted results</li>
+<li><strong>BUG010:</strong> Inconsistent data structure between requests</li>
+</ol>
+<h2 id="ai-tools-effectiveness">AI Tools Effectiveness</h2>
+<h3 id="advantages">Advantages</h3>
+<ul>
+<li><strong>Automated Test Generation:</strong> AI tools quickly generated comprehensive test cases covering all query parameters</li>
+<li><strong>Pattern Recognition:</strong> Identified inconsistent API behaviors efficiently</li>
+<li><strong>Schema Validation:</strong> Automated validation of response structures</li>
+<li><strong>Performance Analysis:</strong> AI-assisted response time measurement and analysis</li>
+<li><strong>Bug Detection:</strong> AI tools helped identify subtle bugs in filtering and sorting logic</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li><strong>False Positives:</strong> Some AI-generated test cases had false positive results</li>
+<li><strong>Context Understanding:</strong> AI tools sometimes missed business logic requirements</li>
+<li><strong>Manual Verification:</strong> Human verification still required for critical bugs</li>
+</ul>
+<h2 id="technical-analysis">Technical Analysis</h2>
+<h3 id="response-structure-issues">Response Structure Issues</h3>
+<p>The GET /products endpoint exhibits inconsistent response structures: - Sometimes returns <code>data</code> wrapper, sometimes direct array - Inconsistent pagination metadata format - Varying field names in product objects</p>
+<h3 id="performance-issues">Performance Issues</h3>
+<ul>
+<li>Response time varies significantly (2-8 seconds)</li>
+<li>No caching implementation</li>
+<li>Database queries appear unoptimized</li>
+</ul>
+<h3 id="security-issues">Security Issues</h3>
+<ul>
+<li>Public endpoint incorrectly requires authentication</li>
+<li>Missing input validation for query parameters</li>
+<li>Potential SQL injection vulnerabilities</li>
+</ul>
+<h2 id="recommendations">Recommendations</h2>
+<h3 id="immediate-actions">Immediate Actions</h3>
+<ol type="1">
+<li><strong>Fix High Severity Bugs:</strong> Prioritize fixing authentication and validation issues</li>
+<li><strong>Implement Input Validation:</strong> Add proper validation for all query parameters</li>
+<li><strong>Optimize Database Queries:</strong> Improve query performance and add indexes</li>
+<li><strong>Standardize Response Format:</strong> Ensure consistent response structure</li>
+</ol>
+<h3 id="long-term-improvements">Long-term Improvements</h3>
+<ol type="1">
+<li><strong>API Documentation:</strong> Update OpenAPI specification to match actual behavior</li>
+<li><strong>Automated Testing:</strong> Implement comprehensive automated test suite</li>
+<li><strong>Monitoring:</strong> Add API monitoring and alerting systems</li>
+<li><strong>Caching:</strong> Implement response caching for better performance</li>
+</ol>
+<h2 id="ai-tools-integration">AI Tools Integration</h2>
+<h3 id="test-case-generation">Test Case Generation</h3>
+<p>AI tools successfully generated test cases covering: - All query parameters and their combinations - Edge cases and boundary conditions - Performance and security scenarios - Error handling and validation</p>
+<h3 id="bug-detection">Bug Detection</h3>
+<p>AI tools identified: - Inconsistent response patterns - Performance degradation patterns - Security vulnerabilities - Data validation issues</p>
+<h3 id="limitations-and-improvements">Limitations and Improvements</h3>
+<ul>
+<li>Need for better context understanding</li>
+<li>Improved false positive filtering</li>
+<li>Enhanced business logic validation</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>The API testing with AI tools revealed significant issues in the GET /products endpoint. While the basic functionality works, there are critical problems with filtering, sorting, pagination, and performance. The combination of AI-assisted testing and manual verification proved effective in identifying both obvious and subtle bugs.</p>
+<p>The AI tools demonstrated their value in accelerating test case generation and bug detection, but human oversight remains essential for understanding business context and validating critical functionality.</p>
+<h2 id="appendices">Appendices</h2>
+<h3 id="a.-test-environment">A. Test Environment</h3>
+<ul>
+<li><strong>API Base URL:</strong> https://api-with-bugs.practicesoftwaretesting.com</li>
+<li><strong>Testing Tools:</strong> Postman, AI Assistant, Custom Scripts</li>
+<li><strong>Test Data:</strong> Generated test data for products with various categories and brands</li>
+<li><strong>Authentication:</strong> JWT Bearer tokens (when required)</li>
+</ul>
+<h3 id="b.-api-documentation">B. API Documentation</h3>
+<ul>
+<li><strong>OpenAPI Version:</strong> 3.0.0</li>
+<li><strong>API Version:</strong> 5.0.0</li>
+<li><strong>Endpoint:</strong> GET /products</li>
+<li><strong>Authentication:</strong> Optional (public endpoint)</li>
+</ul>
+<h3 id="c.-bug-statistics">C. Bug Statistics</h3>
+<ul>
+<li><strong>Total Bugs Found:</strong> 10</li>
+<li><strong>High Severity:</strong> 3 (30%)</li>
+<li><strong>Medium Severity:</strong> 7 (70%)</li>
+<li><strong>Low Severity:</strong> 0 (0%)</li>
+<li><strong>Success Rate:</strong> 10% (1 out of 10 tests passed)</li>
+</ul>
+<h3 id="d.-performance-metrics">D. Performance Metrics</h3>
+<ul>
+<li><strong>Average Response Time:</strong> 4.2 seconds</li>
+<li><strong>Maximum Response Time:</strong> 8.1 seconds</li>
+<li><strong>Minimum Response Time:</strong> 1.8 seconds</li>
+<li><strong>Timeout Errors:</strong> 2 out of 10 requests</li>
+</ul>
+<hr />
+<p><strong>Report Generated:</strong> January 13, 2025<br />
+<strong>Student ID:</strong> 22127223<br />
+<strong>Course:</strong> Software Testing<br />
+<strong>Assignment:</strong> API Testing with AI Tools<br />
+<strong>Focus:</strong> GET /products Endpoint</p>

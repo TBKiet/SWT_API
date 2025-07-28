@@ -1,0 +1,33 @@
+Test Case ID,Test Case Name,Test Description,Preconditions,Test Steps,Test Data,Expected Result,Actual Result,Status,Priority,Test Type,API Endpoint,HTTP Method,Headers,Body,Parameters
+TC001,Get Products with Valid Pagination,Test products API with valid pagination parameters,API server is running,"1. Send GET request to /products
+2. Include page=1 and limit=10 parameters
+3. Verify response structure
+4. Check pagination metadata",page=1, limit=10,Response status 200, response contains data array with products, pagination metadata present,Pass,High,Functional,GET /products,GET,Accept: application/json,,page=1&limit=10
+TC002,Get Products with Large Page Size,Test products API with large limit parameter,API server is running,"1. Send GET request to /products
+2. Include page=1 and limit=100 parameters
+3. Verify response structure
+4. Check data array size",page=1, limit=100,Response status 200, response contains data array, pagination works correctly,Pass,Medium,Functional,GET /products,GET,Accept: application/json,,page=1&limit=100
+TC003,Get Products with Invalid Page Number,Test products API with invalid page parameter,API server is running,"1. Send GET request to /products
+2. Include page=0 and limit=10 parameters
+3. Verify error handling",page=0, limit=10,Response status 400 or appropriate error,Error handling works correctly,Fail,High,Error Handling,GET /products,GET,Accept: application/json,,page=0&limit=10
+TC004,Get Products with Invalid Limit,Test products API with invalid limit parameter,API server is running,"1. Send GET request to /products
+2. Include page=1 and limit=0 parameters
+3. Verify error handling",page=1, limit=0,Response status 400 or appropriate error,Error handling works correctly,Fail,High,Error Handling,GET /products,GET,Accept: application/json,,page=1&limit=0
+TC005,Get Products by Category,Test products API with category filter,API server is running,"1. Send GET request to /products
+2. Include category parameter
+3. Verify filtered results",category=electronics,Response status 200, response contains filtered products by category,Pass,Medium,Functional,GET /products,GET,Accept: application/json,,category=electronics
+TC006,Get Product by Valid ID,Test products API to get specific product by ID,API server is running,"1. Send GET request to /products/{id}
+2. Use valid product ID
+3. Verify product details",product_id=1,Response status 200, response contains complete product details,Pass,High,Functional,GET /products/{id},GET,Accept: application/json,,product_id=1
+TC007,Get Product by Invalid ID,Test products API with invalid product ID,API server is running,"1. Send GET request to /products/{id}
+2. Use invalid product ID
+3. Verify error handling",product_id=99999,Response status 404 or appropriate error,Error handling works correctly,Fail,Medium,Error Handling,GET /products/{id},GET,Accept: application/json,,product_id=99999
+TC008,Search Products with Valid Term,Test products API search functionality,API server is running,"1. Send GET request to /products
+2. Include search parameter
+3. Verify search results",search_term=phone,Response status 200, response contains products matching search term,Pass,Medium,Functional,GET /products,GET,Accept: application/json,,search=phone
+TC009,Search Products with Empty Term,Test products API search with empty search term,API server is running,"1. Send GET request to /products
+2. Include empty search parameter
+3. Verify response",search_term=,Response status 200, response contains all products or appropriate handling,Pass,Low,Functional,GET /products,GET,Accept: application/json,,search=
+TC010,API Response Time Performance,Test API response time under normal load,API server is running,"1. Send GET request to /products
+2. Measure response time
+3. Verify performance criteria",page=1, limit=10,Response time less than 15 seconds,Response time acceptable,Pass,Medium,Performance,GET /products,GET,Accept: application/json,,page=1&limit=10 

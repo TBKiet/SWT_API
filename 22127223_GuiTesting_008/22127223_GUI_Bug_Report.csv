@@ -1,0 +1,89 @@
+No.,BugID,Summary,Steps to Reproduce,Actual Result,Expected Result,Priority,Severity,Affected Feature,Version,Status,Assigned To,Reported Date,Environment
+1,BUG001,Generic Error Messages in Registration Form Validation,"1. Navigate to registration page
+2. Leave required fields empty
+3. Click Register button
+4. Observe error messages","1. Form validation errors displayed
+2. Generic 'Invalid character' messages shown for name fields
+3. Generic error messages for phone validation","1. Form validation errors displayed
+2. Specific error messages for each field type
+3. Clear guidance on what characters are allowed
+4. Helpful validation messages",Medium,Medium,User Registration,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+2,BUG002,Search Button Typo in Product Page,"1. Navigate to products page
+2. Look at the search section
+3. Observe search button text","1. Search button displays 'Serch' instead of 'Search'
+2. Button functionality works correctly
+3. Typo is visible to all users","1. Search button displays 'Search' correctly
+2. Button functionality works correctly
+3. Professional appearance maintained",Low,Low,Product Search,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+3,BUG003,Responsive Design Issues on Mobile Devices,"1. Open application in mobile viewport
+2. Test navigation menu collapse
+3. Check filters section responsiveness
+4. Test touch interactions","1. Some elements not properly responsive
+2. Navigation may not collapse correctly
+3. Filters section may have layout issues
+4. Touch targets may be too small","1. All elements properly responsive
+2. Navigation collapses into hamburger menu
+3. Filters section adapts to mobile layout
+4. Touch targets meet accessibility standards",Medium,Medium,Responsive Design,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+4,BUG004,Product Images Hidden in Chrome Browser,"1. Navigate to products page in Chrome
+2. Look for products with IDs 5, 13, 20
+3. Observe image display","1. Product images for IDs 5, 13, 20 are hidden
+2. Images have 'd-none' class applied in Chrome
+3. Other browsers display images correctly","1. All product images display correctly in Chrome
+2. No browser-specific image hiding
+3. Consistent image display across browsers",Medium,Medium,Product Display,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+5,BUG005,Missing Accessibility Attributes in Forms,"1. Navigate to registration form
+2. Check form field accessibility
+3. Test with screen reader
+4. Verify ARIA attributes","1. Some form fields missing proper accessibility attributes
+2. Tab order may not be logical
+3. Screen reader compatibility issues
+4. Missing ARIA labels","1. All form fields have proper accessibility attributes
+2. Logical tab order implemented
+3. Full screen reader compatibility
+4. Proper ARIA labels and descriptions",High,Medium,Accessibility,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+6,BUG006,Generic Error Messages in Form Validation,"1. Submit forms with invalid data
+2. Try registration with existing email
+3. Try login with wrong credentials
+4. Observe error messages","1. Generic error messages displayed
+2. Not specific enough for user guidance
+3. Error messages lack helpful information
+4. Inconsistent error message format","1. Specific error messages for each validation failure
+2. Clear guidance on how to fix issues
+3. Helpful and informative error messages
+4. Consistent error message format",Medium,Medium,Form Validation,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+7,BUG007,Browser-Specific Styling Issues,"1. Test application in Chrome
+2. Test application in Firefox
+3. Test application in Safari
+4. Compare styling across browsers","1. Inconsistent styling across browsers
+2. Browser-specific CSS issues
+3. Different appearance in different browsers
+4. Some features may not work consistently","1. Consistent styling across all browsers
+2. No browser-specific CSS issues
+3. Uniform appearance in all browsers
+4. All features work consistently",Medium,Medium,Cross-browser Compatibility,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+8,BUG008,Broken Image in Header Logo,"1. Open application homepage
+2. Look at header logo
+3. Check browser developer tools for image errors","1. Header logo shows broken image
+2. Image source points to 'broken.png'
+3. Logo area appears empty or shows broken image icon","1. Header logo displays correctly
+2. Proper logo image is loaded
+3. Professional appearance maintained",Low,Low,Header Component,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+9,BUG009,Inconsistent Form Field Labels,"1. Navigate to registration form
+2. Check form field labels
+3. Observe label inconsistencies","1. Some labels are inconsistent
+2. 'Country' and 'State' labels are swapped
+3. Confusing user experience
+4. Labels don't match expected input","1. Consistent and correct form field labels
+2. 'Country' and 'State' labels are correct
+3. Clear user experience
+4. Labels match expected input types",Medium,Medium,Form Labels,Sprint 5 with bugs,Open,22127223,2025-01-13,Production
+10,BUG010,Missing Success Messages,"1. Complete registration form with valid data
+2. Submit registration
+3. Observe response after successful submission","1. Registration completes successfully
+2. No success message displayed
+3. User redirected without confirmation
+4. No feedback on successful action","1. Registration completes successfully
+2. Clear success message displayed
+3. User redirected with confirmation
+4. Proper feedback on successful action",Medium,Low,User Feedback,Sprint 5 with bugs,Open,22127223,2025-01-13,Production 

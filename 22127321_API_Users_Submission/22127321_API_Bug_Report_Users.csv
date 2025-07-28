@@ -1,0 +1,22 @@
+Bug ID,Bug Title,Bug Description,Steps to Reproduce,Expected Behavior,Actual Behavior,Severity,Priority,Status,Assigned To,Reported By,Reported Date,Environment,Test Case ID,API Endpoint,HTTP Method,Headers,Body,Parameters,Error Message,Stack Trace,Additional Notes
+BUG001,High Response Time for Users API,Users API endpoint takes more than 10 seconds to respond,"1. Send GET request to /users?page=1&limit=10
+2. Measure response time
+3. Observe slow performance",Response time should be under 5 seconds,Response time is 14+ seconds,High,High,Open,Developer,22127321,2025-01-13,Production,TC009,GET /users,GET,Accept: application/json,,page=1&limit=10,Response time: 14406ms,No stack trace available,Performance issue affecting user experience
+BUG002,Invalid Page Parameter Not Handled,API accepts page=0 without proper validation,"1. Send GET request to /users?page=0&limit=10
+2. Observe response",Should return 400 Bad Request for invalid page,Returns 200 OK with data,Medium,Medium,Open,Developer,22127321,2025-01-13,Production,TC003,GET /users,GET,Accept: application/json,,page=0&limit=10,No error message,No stack trace available,Input validation missing
+BUG003,Invalid Limit Parameter Not Handled,API accepts limit=0 without proper validation,"1. Send GET request to /users?page=1&limit=0
+2. Observe response",Should return 400 Bad Request for invalid limit,Returns 200 OK with data,Medium,Medium,Open,Developer,22127321,2025-01-13,Production,TC004,GET /users,GET,Accept: application/json,,page=1&limit=0,No error message,No stack trace available,Input validation missing
+BUG004,Missing Error Handling for Invalid User ID,API doesn't handle invalid user IDs properly,"1. Send GET request to /users/99999
+2. Observe response",Should return 404 Not Found for non-existent user,May return 200 or inconsistent error,Medium,Medium,Open,Developer,22127321,2025-01-13,Production,TC006,GET /users/{id},GET,Accept: application/json,,user_id=99999,Inconsistent error handling,No stack trace available,Error handling needs improvement
+BUG005,Search Functionality Limited,Search API doesn't handle special characters properly,"1. Send GET request to /users?search=test@123
+2. Observe response",Should handle special characters gracefully,May cause errors or unexpected behavior,Low,Low,Open,Developer,22127321,2025-01-13,Production,TC007,GET /users,GET,Accept: application/json,,search=test@123,No specific error,No stack trace available,Search functionality needs enhancement
+BUG006,Missing Rate Limiting,API doesn't implement rate limiting,"1. Send multiple rapid requests to /users
+2. Observe response",Should implement rate limiting to prevent abuse,No rate limiting implemented,Medium,Medium,Open,Developer,22127321,2025-01-13,Production,TC001,GET /users,GET,Accept: application/json,,page=1&limit=10,No rate limiting,No stack trace available,Security concern
+BUG007,Inconsistent Response Structure,API response structure varies between endpoints,"1. Compare responses from different endpoints
+2. Observe structure differences",Should have consistent response structure,Response structure varies,Low,Low,Open,Developer,22127321,2025-01-13,Production,TC001,GET /users,GET,Accept: application/json,,page=1&limit=10,No specific error,No stack trace available,API consistency issue
+BUG008,Missing CORS Headers,API doesn't include proper CORS headers,"1. Send request from browser
+2. Check CORS headers",Should include proper CORS headers,Missing CORS headers,Low,Low,Open,Developer,22127321,2025-01-13,Production,TC001,GET /users,GET,Accept: application/json,,page=1&limit=10,No CORS headers,No stack trace available,Cross-origin request issue
+BUG009,No API Versioning,API doesn't implement versioning,"1. Check API endpoints
+2. Observe no versioning",Should implement API versioning (e.g., /v1/users),No versioning implemented,Low,Low,Open,Developer,22127321,2025-01-13,Production,TC001,GET /users,GET,Accept: application/json,,page=1&limit=10,No versioning,No stack trace available,API design issue
+BUG010,Missing Documentation,API lacks comprehensive documentation,"1. Check API documentation
+2. Observe missing details",Should have comprehensive API documentation,Documentation is incomplete,Low,Low,Open,Developer,22127321,2025-01-13,Production,TC001,GET /users,GET,Accept: application/json,,page=1&limit=10,No documentation,No stack trace available,Developer experience issue 

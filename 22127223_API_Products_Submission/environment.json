@@ -1,0 +1,57 @@
+{
+  "id": "22127223-products-api-testing-env",
+  "name": "Products API Testing Environment",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "https://api-with-bugs.practicesoftwaretesting.com",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "page",
+      "value": "{{page}}",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "limit",
+      "value": "{{limit}}",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "expected_status",
+      "value": "{{expected_status}}",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "test_type",
+      "value": "{{test_type}}",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "product_id",
+      "value": "1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "category",
+      "value": "electronics",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "search_term",
+      "value": "phone",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2025-01-13T10:00:00.000Z",
+  "_postman_exported_using": "Postman/10.0.0"
+} 

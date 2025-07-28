@@ -1,0 +1,22 @@
+,,,,,,,,,,Test Execution,,,,,
+No.,Test Case ID,Test Type,Requirement Name,Test case name/Objective,Precondition,Test steps,Test Data,Expected Result,Created By,Actual Result,Status,Bug ID,Tester,Tested Date,Remark
+1,Login-TC001,Functional,Login,Blank username,,"1. Enter User Name
+ 2.Enter Password
+ 3. Click ""Ok"" button","Username: """", Password: ""abcd""
+
+",,Student ID1,,Passed,,,,
+2,Login-TC002,Functional,Login,Check Login fail with blank Password,,"1. Enter User Name
+ 2.Enter Password
+ 3. Click ""Ok"" button","User Name : ""abcd"", Password: """"",,Student ID1,XYZ,Failed,BugID,,,
+3,Manage Client-TC001,Functional,Manage Client,Verify that 'Manage Clients' page is loaded and display client list,,"Test environment: 
+ - Platform: FF 5.0, Win7
+ - Server: http://123.30.67.51/mambo/build1
+ 
+Steps: 
+  1. Click on menu Components > Banners > Manage Clients
+  2. Verify that 'Manage Clients' page is loaded and display client list
+  3. Click on 'New' button in the top right of page
+  4. Verify that 'Manage Clients: New' page is loaded
+ ",,,Student ID3,,,,,,
+4,,,,,,,,,,,,,,,
+<<< Insert New Line above this line >>>,,,,,,,,,,,,,,,

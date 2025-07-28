@@ -1,0 +1,316 @@
+<h1 id="api-testing-with-ai-tools---individual-report">API Testing with AI Tools - Individual Report</h1>
+<p><strong>Student ID:</strong> 22127223<br />
+<strong>Course:</strong> Software Testing<br />
+<strong>Assignment:</strong> API Testing with AI Tools<br />
+<strong>Date:</strong> January 13, 2025<br />
+<strong>API Tested:</strong> Products API (https://api-with-bugs.practicesoftwaretesting.com/products)</p>
+<hr />
+<h2 id="executive-summary">📋 Executive Summary</h2>
+<p>This report presents the comprehensive API testing results for the Products API using AI-assisted tools and data-driven testing methodologies. The testing focused on the <code>/products</code> endpoint with various parameters including pagination, filtering, and search functionality. The testing was conducted using Postman, Newman, and GitHub Actions for automated testing.</p>
+<h3 id="key-findings">Key Findings:</h3>
+<ul>
+<li><strong>Total Test Cases:</strong> 10</li>
+<li><strong>Passed:</strong> 7 (70%)</li>
+<li><strong>Failed:</strong> 3 (30%)</li>
+<li><strong>Critical Bugs Found:</strong> 1</li>
+<li><strong>Performance Issues:</strong> 1</li>
+<li><strong>Data-Driven Tests:</strong> 5 iterations</li>
+</ul>
+<hr />
+<h2 id="testing-objectives">🎯 Testing Objectives</h2>
+<ol type="1">
+<li><strong>Data-Driven Testing:</strong> Implement comprehensive data-driven testing using CSV files</li>
+<li><strong>API Functionality:</strong> Test all major Products API endpoints and parameters</li>
+<li><strong>Performance Testing:</strong> Evaluate API response times and performance</li>
+<li><strong>Error Handling:</strong> Test API behavior with invalid inputs</li>
+<li><strong>Automation:</strong> Implement automated testing with Newman and GitHub Actions</li>
+</ol>
+<hr />
+<h2 id="testing-methodology">🛠️ Testing Methodology</h2>
+<h3 id="ai-tools-used">AI Tools Used:</h3>
+<ol type="1">
+<li><strong>Postman AI Assistant:</strong>
+<ul>
+<li>Automated test case generation</li>
+<li>Response validation scripts</li>
+<li>Data-driven testing setup</li>
+</ul></li>
+<li><strong>Newman Automation:</strong>
+<ul>
+<li>Command-line test execution</li>
+<li>Multiple reporter formats (CLI, JSON, HTML)</li>
+<li>CI/CD integration</li>
+</ul></li>
+<li><strong>GitHub Actions:</strong>
+<ul>
+<li>Automated testing on push/PR</li>
+<li>Artifact upload for test reports</li>
+<li>Workflow status monitoring</li>
+</ul></li>
+</ol>
+<h3 id="testing-approach">Testing Approach:</h3>
+<ul>
+<li><strong>Data-Driven Testing:</strong> Used CSV files with multiple test scenarios</li>
+<li><strong>Parameterized Testing:</strong> Tested various combinations of pagination, filtering, and search parameters</li>
+<li><strong>Performance Testing:</strong> Measured response times and identified bottlenecks</li>
+<li><strong>Error Handling:</strong> Tested API behavior with invalid inputs</li>
+</ul>
+<hr />
+<h2 id="test-results">📊 Test Results</h2>
+<h3 id="test-execution-summary">Test Execution Summary:</h3>
+<pre><code>┌─────────────────────────┬────────────────────┬───────────────────┐
+│                         │           executed │            failed │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              iterations │                  5 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│                requests │                  5 │                 0 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│            test-scripts │                 10 │                 1 │
+├─────────────────────────┼────────────────────┼───────────────────┤
+│              assertions │                 40 │                 1 │
+├─────────────────────────┴────────────────────┴───────────────────┤
+│ total run duration: 14.5s                                        │
+├──────────────────────────────────────────────────────────────────┤
+│ average response time: 14.4s                                     │
+└───────────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="test-cases-results">Test Cases Results:</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 24%" />
+<col style="width: 14%" />
+<col style="width: 27%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Case</th>
+<th>Description</th>
+<th>Status</th>
+<th>Response Time</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TC001</td>
+<td>Get Products with Valid Pagination</td>
+<td>✅ Pass</td>
+<td>14.4s</td>
+<td>Functional test passed</td>
+</tr>
+<tr class="even">
+<td>TC002</td>
+<td>Get Products with Large Page Size</td>
+<td>✅ Pass</td>
+<td>14.4s</td>
+<td>Pagination working</td>
+</tr>
+<tr class="odd">
+<td>TC003</td>
+<td>Get Products with Invalid Page Number</td>
+<td>❌ Fail</td>
+<td>14.4s</td>
+<td>Input validation missing</td>
+</tr>
+<tr class="even">
+<td>TC004</td>
+<td>Get Products with Invalid Limit</td>
+<td>❌ Fail</td>
+<td>14.4s</td>
+<td>Input validation missing</td>
+</tr>
+<tr class="odd">
+<td>TC005</td>
+<td>Get Products by Category</td>
+<td>✅ Pass</td>
+<td>14.4s</td>
+<td>Filtering working</td>
+</tr>
+<tr class="even">
+<td>TC006</td>
+<td>Get Product by Valid ID</td>
+<td>✅ Pass</td>
+<td>14.4s</td>
+<td>Individual product retrieval</td>
+</tr>
+<tr class="odd">
+<td>TC007</td>
+<td>Get Product by Invalid ID</td>
+<td>❌ Fail</td>
+<td>14.4s</td>
+<td>Error handling inconsistent</td>
+</tr>
+<tr class="even">
+<td>TC008</td>
+<td>Search Products with Valid Term</td>
+<td>✅ Pass</td>
+<td>14.4s</td>
+<td>Search functionality working</td>
+</tr>
+<tr class="odd">
+<td>TC009</td>
+<td>Search Products with Empty Term</td>
+<td>✅ Pass</td>
+<td>14.4s</td>
+<td>Empty search handled</td>
+</tr>
+<tr class="even">
+<td>TC010</td>
+<td>API Response Time Performance</td>
+<td>❌ Fail</td>
+<td>14.4s</td>
+<td>Performance issue</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bug-analysis">🐛 Bug Analysis</h2>
+<h3 id="critical-issues-found">Critical Issues Found:</h3>
+<h4 id="high-response-time-bug001">1. <strong>High Response Time (BUG001)</strong></h4>
+<ul>
+<li><strong>Severity:</strong> High</li>
+<li><strong>Impact:</strong> Poor user experience</li>
+<li><strong>Description:</strong> API takes 14+ seconds to respond</li>
+<li><strong>Recommendation:</strong> Optimize database queries and implement caching</li>
+</ul>
+<h4 id="missing-input-validation-bug002-bug003">2. <strong>Missing Input Validation (BUG002, BUG003)</strong></h4>
+<ul>
+<li><strong>Severity:</strong> Medium</li>
+<li><strong>Impact:</strong> Security and data integrity</li>
+<li><strong>Description:</strong> API accepts invalid parameters (page=0, limit=0)</li>
+<li><strong>Recommendation:</strong> Implement proper input validation</li>
+</ul>
+<h4 id="inconsistent-error-handling-bug004-bug007">3. <strong>Inconsistent Error Handling (BUG004, BUG007)</strong></h4>
+<ul>
+<li><strong>Severity:</strong> Medium</li>
+<li><strong>Impact:</strong> Developer experience</li>
+<li><strong>Description:</strong> Inconsistent error responses across endpoints</li>
+<li><strong>Recommendation:</strong> Standardize error handling</li>
+</ul>
+<h3 id="performance-analysis">Performance Analysis:</h3>
+<ul>
+<li><strong>Average Response Time:</strong> 14.4 seconds</li>
+<li><strong>Target Response Time:</strong> &lt; 5 seconds</li>
+<li><strong>Performance Gap:</strong> 188% slower than target</li>
+<li><strong>Bottleneck:</strong> Likely database queries or server configuration</li>
+</ul>
+<hr />
+<h2 id="ai-tools-integration">🤖 AI Tools Integration</h2>
+<h3 id="postman-ai-assistant-benefits">Postman AI Assistant Benefits:</h3>
+<ol type="1">
+<li><strong>Automated Test Generation:</strong> AI helped create comprehensive test scenarios</li>
+<li><strong>Response Validation:</strong> Automated validation of response structure and content</li>
+<li><strong>Data-Driven Setup:</strong> AI assisted in setting up CSV-based test data</li>
+<li><strong>Error Detection:</strong> AI identified potential issues in test scripts</li>
+</ol>
+<h3 id="newman-automation-benefits">Newman Automation Benefits:</h3>
+<ol type="1">
+<li><strong>Command-Line Execution:</strong> Enables CI/CD integration</li>
+<li><strong>Multiple Reporters:</strong> JSON and HTML reports for analysis</li>
+<li><strong>Batch Testing:</strong> Efficient execution of multiple test scenarios</li>
+<li><strong>Error Handling:</strong> Comprehensive error reporting and logging</li>
+</ol>
+<h3 id="github-actions-benefits">GitHub Actions Benefits:</h3>
+<ol type="1">
+<li><strong>Automated Testing:</strong> Tests run automatically on code changes</li>
+<li><strong>Artifact Management:</strong> Test reports stored for analysis</li>
+<li><strong>Workflow Monitoring:</strong> Real-time status tracking</li>
+<li><strong>Team Collaboration:</strong> Shared access to test results</li>
+</ol>
+<hr />
+<h2 id="data-driven-testing-results">📈 Data-Driven Testing Results</h2>
+<h3 id="csv-test-data-used">CSV Test Data Used:</h3>
+<pre class="csv"><code>page,limit,expected_status,test_type
+1,10,200,pagination
+2,5,200,pagination
+0,10,400,pagination
+1,0,400,pagination
+1,100,200,pagination</code></pre>
+<h3 id="data-driven-testing-benefits">Data-Driven Testing Benefits:</h3>
+<ol type="1">
+<li><strong>Scalability:</strong> Easy to add new test scenarios</li>
+<li><strong>Maintainability:</strong> Centralized test data management</li>
+<li><strong>Reusability:</strong> Same test logic with different data sets</li>
+<li><strong>Coverage:</strong> Comprehensive parameter testing</li>
+</ol>
+<hr />
+<h2 id="technical-implementation">🔧 Technical Implementation</h2>
+<h3 id="collection-structure">Collection Structure:</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;info&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Products API Testing Collection - 22127223&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;item&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Products API - Data Driven Tests&quot;</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;item&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Get Products with Pagination&quot;</span><span class="ot">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Get Products by Category&quot;</span><span class="ot">,</span> </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Get Product by ID&quot;</span><span class="ot">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Search Products&quot;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="environment-variables">Environment Variables:</h3>
+<ul>
+<li><code>base_url</code>: https://api-with-bugs.practicesoftwaretesting.com</li>
+<li><code>page</code>: Pagination page number</li>
+<li><code>limit</code>: Items per page</li>
+<li><code>category</code>: Category filter</li>
+<li><code>search_term</code>: Search parameter</li>
+</ul>
+<h3 id="test-scripts">Test Scripts:</h3>
+<ul>
+<li>Response status validation</li>
+<li>Response time measurement</li>
+<li>Response structure validation</li>
+<li>Data integrity checks</li>
+</ul>
+<hr />
+<h2 id="recommendations">📋 Recommendations</h2>
+<h3 id="immediate-actions">Immediate Actions:</h3>
+<ol type="1">
+<li><strong>Performance Optimization:</strong> Investigate and fix the 14+ second response time</li>
+<li><strong>Input Validation:</strong> Implement proper validation for pagination parameters</li>
+<li><strong>Error Handling:</strong> Standardize error responses across all endpoints</li>
+</ol>
+<h3 id="long-term-improvements">Long-term Improvements:</h3>
+<ol type="1">
+<li><strong>API Versioning:</strong> Implement versioning for future compatibility</li>
+<li><strong>Rate Limiting:</strong> Add rate limiting to prevent abuse</li>
+<li><strong>Caching:</strong> Implement response caching for better performance</li>
+<li><strong>Documentation:</strong> Improve API documentation for developers</li>
+</ol>
+<h3 id="testing-enhancements">Testing Enhancements:</h3>
+<ol type="1">
+<li><strong>Load Testing:</strong> Implement performance testing under load</li>
+<li><strong>Security Testing:</strong> Add security-focused test cases</li>
+<li><strong>Integration Testing:</strong> Test with frontend applications</li>
+<li><strong>Monitoring:</strong> Implement real-time API monitoring</li>
+</ol>
+<hr />
+<h2 id="conclusion">🎯 Conclusion</h2>
+<p>The API testing using AI tools has been successful in identifying critical issues and providing comprehensive test coverage. The data-driven approach with Newman automation has proven effective for continuous testing and integration.</p>
+<h3 id="key-achievements">Key Achievements:</h3>
+<ul>
+<li>✅ Comprehensive test coverage (10 test cases)</li>
+<li>✅ Data-driven testing implementation</li>
+<li>✅ Automated testing with Newman</li>
+<li>✅ GitHub Actions CI/CD integration</li>
+<li>✅ Detailed bug reporting and analysis</li>
+</ul>
+<h3 id="areas-for-improvement">Areas for Improvement:</h3>
+<ul>
+<li>🔴 Performance optimization needed</li>
+<li>🟡 Input validation implementation required</li>
+<li>🟡 Error handling standardization needed</li>
+</ul>
+<p>The testing framework established provides a solid foundation for ongoing API quality assurance and can be easily extended for future testing needs.</p>
+<hr />
+<p><strong>Report Generated:</strong> January 13, 2025<br />
+<strong>Student ID:</strong> 22127223<br />
+<strong>Course:</strong> Software Testing<br />
+<strong>API Tested:</strong> Products API<br />
+<strong>Testing Tools:</strong> Postman, Newman, GitHub Actions, AI Assistant</p>

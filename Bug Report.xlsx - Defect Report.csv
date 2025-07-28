@@ -1,0 +1,106 @@
+No.,BugID,Summary,Steps to Reproduce,Actual Result,Expected Result,Priority,Severity,Affected Feature,Version,Status,Assigned To,Reported Date,Environment
+1,BUG001,Missing Success Message on Registration,"1. Fill registration form with valid data
+2. Click Register button
+3. Account is created successfully","1. User account created successfully
+2. No success message displayed
+3. Redirected to login page","1. User account created successfully
+2. Success message displayed
+3. Redirected to login page",Medium,Low,User Registration,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+2,BUG002,Generic Error Messages Instead of Specific Validation Errors,"1. Leave required fields empty on registration form
+2. Click Register button
+3. Observe error messages","1. Validation errors displayed for required fields
+2. Generic error messages shown
+3. Form submission prevented","1. Validation errors displayed for required fields
+2. Specific error messages for each field
+3. Form submission prevented",Medium,Medium,User Registration,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+3,BUG003,Generic Error Message for Invalid Name Format,"1. Enter first_name with numbers
+2. Enter last_name with special characters
+3. Fill other fields with valid data
+4. Click Register button","1. Name validation error displayed
+2. Generic 'Invalid character' message shown","1. Name validation error displayed
+2. Clear error message about name format
+3. Specific guidance on allowed characters",Medium,Medium,User Registration,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+4,BUG004,Generic Error Message for Invalid Phone Format,"1. Enter phone with letters
+2. Enter phone with special characters
+3. Fill other fields with valid data
+4. Click Register button","1. Phone validation error displayed
+2. Generic 'Invalid character' message shown","1. Phone validation error displayed
+2. Clear error message about phone format
+3. Specific guidance on phone number requirements",Medium,Medium,User Registration,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+5,BUG005,Security Issue: Password Hint in Duplicate Email Error,"1. Try to register with existing email address
+2. Fill other fields with valid data
+3. Click Register button","1. Duplicate email error displayed
+2. Inappropriate error message with password hint
+3. Security vulnerability exposed","1. Duplicate email error displayed
+2. Clear error message about duplicate email
+3. No sensitive information revealed",High,Critical,Security,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+6,BUG006,Account Lockout Too Strict - Locks After 1 Failed Attempt,"1. Attempt login with wrong password
+2. Try login with correct password
+3. Observe lockout behavior","1. Account locked after 1 failed attempt
+2. Cannot login even with correct password
+3. No lockout expiration mechanism","1. Account locked after multiple failed attempts (3-5)
+2. Cannot login even with correct password
+3. Lockout expires after timeout period",High,High,Security,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+7,BUG007,Critical SQL Injection Vulnerability in Login,"1. Enter SQL injection payload in email field
+2. Enter SQL injection payload in password field
+3. Submit login form","1. SQL injection vulnerability exists
+2. Raw SQL query used with user input
+3. No input sanitization
+4. Critical security vulnerability","1. Input properly sanitized
+2. No SQL injection vulnerability exploited
+3. Appropriate error messages displayed
+4. System remains secure",Critical,Critical,Security,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+8,BUG008,Generic Error Message for Special Characters in Names,"1. Enter first_name with special characters
+2. Enter last_name with special characters
+3. Fill other fields with valid data
+4. Click Register button","1. Name validation error displayed
+2. Generic 'Invalid character' message shown","1. Name validation error displayed
+2. Clear error message about name format
+3. Specific guidance on allowed characters",Medium,Medium,User Registration,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+9,BUG009,Generic Error Message for Unicode Characters in Names,"1. Enter first_name with unicode characters
+2. Enter last_name with unicode characters
+3. Fill other fields with valid data
+4. Click Register button","1. Name validation error displayed
+2. Generic 'Invalid character' message shown","1. Name validation error displayed
+2. Clear error message about name format
+3. Specific guidance on allowed characters",Medium,Medium,User Registration,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+10,BUG010,Inconsistent Whitespace Handling,"1. Enter data with leading spaces
+2. Enter data with trailing spaces
+3. Enter data with both leading and trailing spaces
+4. Click Register button","1. Whitespace not properly handled
+2. Spaces may cause validation errors
+3. Inconsistent behavior across fields
+4. No automatic trimming","1. Proper whitespace handling
+2. Validation errors if spaces not allowed
+3. Appropriate error messages
+4. Consistent behavior across fields",Medium,Medium,Data Quality,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+11,BUG011,No Password Strength Validation,"1. Enter weak passwords (e.g., 'password123')
+2. Enter strong passwords with mixed character types
+3. Check validation messages","1. Only length validation (no strength validation)
+2. No helpful error messages about strength
+3. No strength indicators
+4. Minimal feedback","1. Proper password strength validation
+2. Helpful error messages
+3. Clear strength indicators
+4. Appropriate feedback",High,Medium,Security,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+12,BUG012,No Email Verification Mechanism,"1. Register new user account
+2. Check if verification email sent
+3. Try to login without verification
+4. Attempt to verify account","1. Verification email sent (local environment only)
+2. No verification mechanism implemented
+3. Can login without verification
+4. No verification requirement","1. Verification email sent
+2. Account properly verified
+3. Cannot login before verification
+4. Verification requirement enforced",Medium,Medium,Email Flow,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+13,BUG013,Password Reset Feature Not Implemented,"1. Try to access password reset functionality
+2. Look for 'Forgot Password' link
+3. Attempt to reset password
+4. Check for reset email mechanism","1. No password reset functionality
+2. No reset email mechanism
+3. Cannot reset password
+4. Feature not implemented","1. Reset email sent
+2. Password successfully reset
+3. Can login with new password
+4. Old password no longer works",Low,Low,Password Reset,Sprint 5 with bugs,Open,22127223,2025-07-13,Production
+<<< Insert New Line above this line >>>,,,,,,,,,,,,,

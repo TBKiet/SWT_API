@@ -1,0 +1,33 @@
+Test Case ID,Test Case Name,Test Description,Preconditions,Test Steps,Test Data,Expected Result,Actual Result,Status,Priority,Test Type,API Endpoint,HTTP Method,Headers,Body,Parameters
+TC001,Get Users with Valid Pagination,Test users API with valid pagination parameters,API server is running,"1. Send GET request to /users
+2. Include page=1 and limit=10 parameters
+3. Verify response structure
+4. Check pagination metadata",page=1, limit=10,Response status 200, response contains data array with users, pagination metadata present,,,Functional,GET /users,GET,Accept: application/json,,page=1&limit=10
+TC002,Get Users with Large Page Size,Test users API with large limit parameter,API server is running,"1. Send GET request to /users
+2. Include page=1 and limit=100 parameters
+3. Verify response structure
+4. Check data array size",page=1, limit=100,Response status 200, response contains data array, pagination works correctly,,,Functional,GET /users,GET,Accept: application/json,,page=1&limit=100
+TC003,Get Users with Invalid Page Number,Test users API with invalid page parameter,API server is running,"1. Send GET request to /users
+2. Include page=0 and limit=10 parameters
+3. Verify error handling",page=0, limit=10,Response status 400 or appropriate error,Error handling works correctly,,,Error Handling,GET /users,GET,Accept: application/json,,page=0&limit=10
+TC004,Get Users with Invalid Limit,Test users API with invalid limit parameter,API server is running,"1. Send GET request to /users
+2. Include page=1 and limit=0 parameters
+3. Verify error handling",page=1, limit=0,Response status 400 or appropriate error,Error handling works correctly,,,Error Handling,GET /users,GET,Accept: application/json,,page=1&limit=0
+TC005,Get User by Valid ID,Test users API to get specific user by ID,API server is running,"1. Send GET request to /users/{id}
+2. Use valid user ID
+3. Verify user details",user_id=1,Response status 200, response contains complete user details,,,Functional,GET /users/{id},GET,Accept: application/json,,user_id=1
+TC006,Get User by Invalid ID,Test users API with invalid user ID,API server is running,"1. Send GET request to /users/{id}
+2. Use invalid user ID
+3. Verify error handling",user_id=99999,Response status 404 or appropriate error,Error handling works correctly,,,Error Handling,GET /users/{id},GET,Accept: application/json,,user_id=99999
+TC007,Search Users with Valid Term,Test users API search functionality,API server is running,"1. Send GET request to /users
+2. Include search parameter
+3. Verify search results",search_term=john,Response status 200, response contains users matching search term,,,Functional,GET /users,GET,Accept: application/json,,search=john
+TC008,Search Users with Empty Term,Test users API search with empty search term,API server is running,"1. Send GET request to /users
+2. Include empty search parameter
+3. Verify response",search_term=,Response status 200, response contains all users or appropriate handling,,,Functional,GET /users,GET,Accept: application/json,,search=
+TC009,API Response Time Performance,Test API response time under normal load,API server is running,"1. Send GET request to /users
+2. Measure response time
+3. Verify performance criteria",page=1, limit=10,Response time less than 15 seconds,Response time acceptable,,,Performance,GET /users,GET,Accept: application/json,,page=1&limit=10
+TC010,Get Users with Search and Pagination,Test users API with search and pagination combined,API server is running,"1. Send GET request to /users
+2. Include search and pagination parameters
+3. Verify filtered and paginated results",search_term=admin, page=1, limit=5,Response status 200, response contains filtered and paginated users,,,Functional,GET /users,GET,Accept: application/json,,search=admin&page=1&limit=5 

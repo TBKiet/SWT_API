@@ -1,0 +1,297 @@
+{
+  "info": {
+    "name": "Products API Testing Collection - 22127223",
+    "description": "Data-driven API testing collection for Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "22127223-products-api-collection",
+    "_exporter_id": "22127223"
+  },
+  "item": [
+    {
+      "name": "Products API - Data Driven Tests",
+      "item": [
+        {
+          "name": "Get Products with Pagination",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Test response status code",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// Test response time",
+                  "pm.test(\"Response time is less than 10000ms\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(10000);",
+                  "});",
+                  "",
+                  "// Test response structure",
+                  "pm.test(\"Response has correct structure\", function () {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (pm.response.code === 200) {",
+                  "        pm.expect(responseJson).to.have.property('data');",
+                  "        pm.expect(responseJson).to.have.property('current_page');",
+                  "        pm.expect(responseJson.data).to.be.an('array');",
+                  "        if (responseJson.data.length > 0) {",
+                  "            pm.expect(responseJson.data[0]).to.have.property('id');",
+                  "            pm.expect(responseJson.data[0]).to.have.property('name');",
+                  "        }",
+                  "    }",
+                  "});",
+                  "",
+                  "// Test pagination",
+                  "pm.test(\"Pagination works correctly\", function () {",
+                  "    const responseJson = pm.response.json();",
+                  "    pm.expect(responseJson.current_page).to.be.a('number');",
+                  "    pm.expect(responseJson.data).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/products?page={{page}}&limit={{limit}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}",
+                  "description": "Number of items per page"
+                }
+              ]
+            },
+            "description": "Get products with pagination using data-driven approach"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Products by Category",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Test response status code",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// Test response structure",
+                  "pm.test(\"Response has correct structure\", function () {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (pm.response.code === 200) {",
+                  "        pm.expect(responseJson).to.have.property('data');",
+                  "        pm.expect(responseJson.data).to.be.an('array');",
+                  "        if (responseJson.data.length > 0) {",
+                  "            pm.expect(responseJson.data[0]).to.have.property('id');",
+                  "            pm.expect(responseJson.data[0]).to.have.property('name');",
+                  "        }",
+                  "    }",
+                  "});",
+                  "",
+                  "// Test category filtering",
+                  "pm.test(\"Category filtering works correctly\", function () {",
+                  "    const responseJson = pm.response.json();",
+                  "    pm.expect(responseJson.data).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/products?category={{category}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "{{category}}",
+                  "description": "Category filter"
+                }
+              ]
+            },
+            "description": "Get products filtered by category using data-driven approach"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Test response status code",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// Test response structure",
+                  "pm.test(\"Response has correct structure\", function () {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (pm.response.code === 200) {",
+                  "        pm.expect(responseJson).to.have.property('id');",
+                  "        pm.expect(responseJson).to.have.property('name');",
+                  "        pm.expect(responseJson).to.have.property('price');",
+                  "    }",
+                  "});",
+                  "",
+                  "// Test specific product ID",
+                  "pm.test(\"Correct product returned\", function () {",
+                  "    const responseJson = pm.response.json();",
+                  "    pm.expect(responseJson.id).to.be.a('number');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/products/{{product_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                "{{product_id}}"
+              ]
+            },
+            "description": "Get specific product by ID using data-driven approach"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Products",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// Test response status code",
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// Test response structure",
+                  "pm.test(\"Response has correct structure\", function () {",
+                  "    const responseJson = pm.response.json();",
+                  "    if (pm.response.code === 200) {",
+                  "        pm.expect(responseJson).to.have.property('data');",
+                  "        pm.expect(responseJson.data).to.be.an('array');",
+                  "    }",
+                  "});",
+                  "",
+                  "// Test search functionality",
+                  "pm.test(\"Search functionality works correctly\", function () {",
+                  "    const responseJson = pm.response.json();",
+                  "    pm.expect(responseJson.data).to.be.an('array');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/products?search={{search_term}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "{{search_term}}",
+                  "description": "Search term"
+                }
+              ]
+            },
+            "description": "Search products using data-driven approach"
+          },
+          "response": []
+        }
+      ],
+      "description": "Products API tests with data-driven approach"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Pre-request script for collection",
+          "console.log('Starting Products API test collection...');"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Post-request script for collection",
+          "console.log('Test completed with status: ' + pm.response.code);"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api-with-bugs.practicesoftwaretesting.com",
+      "type": "string"
+    }
+  ]
+} 

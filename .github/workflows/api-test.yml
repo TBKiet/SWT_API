@@ -1,0 +1,111 @@
+name: API Testing with Newman - 22127223
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '22127223_API_Products_Submission/**'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - '22127223_API_Products_Submission/**'
+  workflow_dispatch:
+
+jobs:
+  api-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install Newman
+      run: npm install -g newman
+      
+    - name: Create reports directory
+      run: mkdir -p 22127223_API_Products_Submission/reports
+      working-directory: 22127223_API_Products_Submission
+      
+    - name: Run API tests with Newman
+      working-directory: 22127223_API_Products_Submission
+      run: |
+        echo "🚀 Starting API Testing with Newman..."
+        echo "Student ID: 22127223"
+        echo "Date: $(date)"
+        echo ""
+        
+        # Check if required files exist
+        if [ ! -f "collection.json" ]; then
+          echo "❌ Collection file not found"
+          exit 1
+        fi
+        
+        if [ ! -f "environment.json" ]; then
+          echo "❌ Environment file not found"
+          exit 1
+        fi
+        
+        if [ ! -f "user-accounts.csv" ]; then
+          echo "❌ CSV data file not found"
+          exit 1
+        fi
+        
+        echo "✅ All required files found"
+        echo ""
+        
+        # Run Newman with collection, environment, and CSV data
+        echo "📊 Running API tests with Newman..."
+        newman run collection.json \
+          --environment environment.json \
+          --iteration-data user-accounts.csv \
+          --reporters cli,json,html \
+          --reporter-json-export reports/api-test-results.json \
+          --reporter-html-export reports/api-test-report.html \
+          --bail
+        
+        # Check exit code
+        if [ $? -eq 0 ]; then
+          echo ""
+          echo "✅ All tests passed successfully!"
+          echo "📁 Test reports generated:"
+          echo "   - JSON: reports/api-test-results.json"
+          echo "   - HTML: reports/api-test-report.html"
+        else
+          echo ""
+          echo "❌ Some tests failed. Check the reports for details."
+          echo "📁 Test reports generated:"
+          echo "   - JSON: reports/api-test-results.json"
+          echo "   - HTML: reports/api-test-report.html"
+        fi
+        
+        echo ""
+        echo "🎯 Test execution completed!"
+        echo "📊 Reports available in the 'reports' directory"
+        
+    - name: Upload test results as artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: api-test-reports-22127223
+        path: |
+          22127223_API_Products_Submission/reports/
+        retention-days: 30
+        
+    - name: Display test results
+      if: always()
+      working-directory: 22127223_API_Products_Submission
+      run: |
+        echo "📊 Test Results Summary:"
+        if [ -f "reports/api-test-results.json" ]; then
+          echo "✅ Test reports generated successfully"
+          echo "📁 Files available:"
+          ls -la reports/
+        else
+          echo "❌ No test reports found"
+        fi 

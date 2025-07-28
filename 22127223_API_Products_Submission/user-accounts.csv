@@ -1,0 +1,11 @@
+page,limit,product_id,category,search_term
+1,10,1,electronics,
+2,5,2,clothing,
+0,10,3,books,
+1,0,4,electronics,
+1,100,5,clothing,
+,,1,,laptop
+,,2,,phone
+,,99999,,nonexistent
+,,3,,book
+,,4,,invalid 

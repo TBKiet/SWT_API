@@ -1,0 +1,109 @@
+No.,Test Case ID,Test Type,Requirement Name,Test case name/Objective,Precondition,Test steps,Test Data,Expected Result,Created By,Actual Result,Status,Bug ID,Tester,Tested Date,Remark
+1,GUI-TC001,Functional,Header Navigation,Verify header navigation menu displays correctly,"1. Application is loaded
+2. User is on homepage",1. Open application homepage
+2. Observe header navigation menu
+3. Check all menu items are visible
+4. Verify dropdown menus work,"Browser: Chrome/Firefox
+Screen resolution: 1920x1080",1. Header navigation menu is displayed
+2. All menu items are visible and properly aligned
+3. Dropdown menus expand/collapse correctly
+4. Navigation links are functional,22127223,,Passed,,,2025-01-13,Header navigation working correctly
+2,GUI-TC002,Functional,User Registration Form,Verify registration form validation displays proper error messages,"1. Application is loaded
+2. User navigates to registration page",1. Navigate to /auth/register
+2. Leave required fields empty
+3. Click Register button
+4. Observe error messages,"Form fields: All empty
+Browser: Chrome",1. Registration form loads correctly
+2. Required field validation errors are displayed
+3. Error messages are clear and specific
+4. Form submission is prevented,22127223,,Failed,BUG001,,2025-01-13,Generic error messages displayed instead of specific ones
+3,GUI-TC003,Functional,Login Form,Verify login form functionality and validation,"1. Application is loaded
+2. User navigates to login page",1. Navigate to /auth/login
+2. Enter invalid email format
+3. Enter short password
+4. Click Login button
+5. Observe validation messages,"Email: invalid-email
+Password: 123
+Browser: Firefox",1. Login form loads correctly
+2. Email format validation error is displayed
+3. Password length validation error is displayed
+4. Form submission is prevented,22127223,,Passed,,,2025-01-13,Login form validation working correctly
+4,GUI-TC004,Functional,Product Search,Verify product search functionality with filters,"1. Application is loaded
+2. User is on products page",1. Navigate to products page
+2. Enter search query in search box
+3. Apply price range filter
+4. Select category filter
+5. Click search button
+6. Verify results,"Search query: hammer
+Price range: $10-$50
+Category: Hand Tools
+Browser: Chrome",1. Search functionality works correctly
+2. Price range filter is applied
+3. Category filter is applied
+4. Search results are displayed
+5. Results match search criteria,22127223,,Failed,BUG002,,2025-01-13,Search button has typo 'Serch' instead of 'Search'
+5,GUI-TC005,Functional,Product Sorting,Verify product sorting functionality,"1. Application is loaded
+2. User is on products page with products displayed",1. Navigate to products page
+2. Select 'Name (A - Z)' from sort dropdown
+3. Verify products are sorted alphabetically
+4. Select 'Price (High - Low)' from sort dropdown
+5. Verify products are sorted by price,"Sort options: name,desc and price,asc
+Browser: Firefox",1. Sort dropdown is functional
+2. Products are sorted alphabetically when 'Name (A - Z)' is selected
+3. Products are sorted by price when 'Price (High - Low)' is selected
+4. Sort changes are applied immediately,22127223,,Passed,,,2025-01-13,Product sorting working correctly
+6,GUI-TC006,Functional,Responsive Design,Verify responsive design on mobile devices,"1. Application is loaded
+2. Browser supports responsive design",1. Open application in mobile viewport
+2. Check header navigation collapse
+3. Verify filters section is collapsible
+4. Test touch interactions
+5. Check text readability,"Viewport: 375x667 (iPhone SE)
+Browser: Chrome DevTools",1. Header navigation collapses into hamburger menu
+2. Filters section is collapsible on mobile
+3. Touch interactions work properly
+4. Text is readable on small screens
+5. Layout adapts to mobile viewport,22127223,,Failed,BUG003,,2025-01-13,Some elements not properly responsive on mobile
+7,GUI-TC007,Functional,Product Images,Verify product images display correctly,"1. Application is loaded
+2. User is on products page",1. Navigate to products page
+2. Observe product images
+3. Check for broken images
+4. Verify image loading
+5. Test image responsiveness,"Product IDs: 5, 13, 20
+Browser: Chrome",1. All product images load correctly
+2. No broken images are displayed
+3. Images are properly sized
+4. Images are responsive
+5. Alt text is available for accessibility,22127223,,Failed,BUG004,,2025-01-13,Some product images hidden in Chrome browser
+8,GUI-TC008,Functional,Form Accessibility,Verify form accessibility features,"1. Application is loaded
+2. User navigates to registration form",1. Navigate to registration form
+2. Check form labels are properly associated
+3. Verify tab order is logical
+4. Test keyboard navigation
+5. Check ARIA attributes,"Form: Registration form
+Browser: Chrome",1. All form fields have proper labels
+2. Tab order follows logical sequence
+3. Keyboard navigation works correctly
+4. ARIA attributes are properly set
+5. Form is accessible to screen readers,22127223,,Failed,BUG005,,2025-01-13,Some form fields missing proper accessibility attributes
+9,GUI-TC009,Functional,Error Handling,Verify error message display and styling,"1. Application is loaded
+2. User attempts invalid operations",1. Try to register with existing email
+2. Try to login with wrong credentials
+3. Submit forms with invalid data
+4. Observe error message styling
+5. Check error message content,"Invalid data: existing email, wrong password
+Browser: Firefox",1. Error messages are displayed clearly
+2. Error styling is consistent
+3. Error messages are informative
+4. Error messages are properly positioned
+5. Error messages are accessible,22127223,,Failed,BUG006,,2025-01-13,Some error messages are generic and not specific
+10,GUI-TC010,Functional,Cross-browser Compatibility,Verify application works across different browsers,"1. Application is loaded
+2. Multiple browsers are available",1. Test application in Chrome
+2. Test application in Firefox
+3. Test application in Safari
+4. Compare functionality across browsers
+5. Check for browser-specific issues,"Browsers: Chrome, Firefox, Safari
+OS: macOS",1. Application works consistently across browsers
+2. No browser-specific functionality issues
+3. Styling is consistent across browsers
+4. All features work in all browsers
+5. No browser-specific bugs,22127223,,Failed,BUG007,,2025-01-13,Some browser-specific styling issues detected 

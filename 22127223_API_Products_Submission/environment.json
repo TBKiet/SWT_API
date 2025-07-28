@@ -1,10 +1,10 @@
 {
   "id": "22127223-products-api-testing-env",
-  "name": "Products API Testing Environment",
+  "name": "Products API Testing Environment - Local Docker",
   "values": [
     {
       "key": "base_url",
-      "value": "https://api-with-bugs.practicesoftwaretesting.com",
+      "value": "http://localhost:8091",
       "type": "default",
       "enabled": true
     },
@@ -21,32 +21,20 @@
       "enabled": true
     },
     {
-      "key": "expected_status",
-      "value": "{{expected_status}}",
-      "type": "default",
-      "enabled": true
-    },
-    {
-      "key": "test_type",
-      "value": "{{test_type}}",
-      "type": "default",
-      "enabled": true
-    },
-    {
       "key": "product_id",
-      "value": "1",
+      "value": "{{product_id}}",
       "type": "default",
       "enabled": true
     },
     {
       "key": "category",
-      "value": "electronics",
+      "value": "{{category}}",
       "type": "default",
       "enabled": true
     },
     {
       "key": "search_term",
-      "value": "phone",
+      "value": "{{search_term}}",
       "type": "default",
       "enabled": true
     }

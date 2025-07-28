@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # Laravel API
+  laravel-api:
+    image: practice-software-testing-api:latest
+    container_name: practice-api
+    ports:
+      - "8091:80"
+    environment:
+      - DB_HOST=mysql
+      - DB_DATABASE=practice_software_testing
+      - DB_USERNAME=root
+      - DB_PASSWORD=password
+      - APP_ENV=local
+      - APP_DEBUG=true
+    depends_on:
+      - mysql
+    volumes:
+      - ./API:/var/www/html
+      - ./storage/logs:/var/www/html/storage/logs
+    networks:
+      - practice-network
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: practice-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: practice_software_testing
+      MYSQL_USER: practice
+      MYSQL_PASSWORD: practice
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./API/database/seeders/toolshop-data.sql:/docker-entrypoint-initdb.d/seed.sql
+    networks:
+      - practice-network
+
+  # Angular Frontend
+  angular-app:
+    image: practice-software-testing-ui:latest
+    container_name: practice-ui
+    ports:
+      - "4200:80"
+    depends_on:
+      - laravel-api
+    networks:
+      - practice-network
+
+  # MailCatcher (for email testing)
+  mailcatcher:
+    image: tophfr/mailcatcher:latest
+    container_name: practice-mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+    networks:
+      - practice-network
+
+  # PHPMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: practice-phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: password
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql
+    networks:
+      - practice-network
+
+volumes:
+  mysql_data:
+
+networks:
+  practice-network:
+    driver: bridge 

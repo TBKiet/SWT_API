@@ -6,8 +6,8 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies with legacy peer deps to resolve conflicts
+RUN npm ci --legacy-peer-deps
 
 # Copy source code
 COPY . .
@@ -19,7 +19,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy built application
-COPY --from=build /app/dist/practice-software-testing /usr/share/nginx/html
+COPY --from=build /app/dist/toolshop /usr/share/nginx/html
 
 # Copy nginx configuration
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf

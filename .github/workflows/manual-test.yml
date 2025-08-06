@@ -1,0 +1,65 @@
+name: Quick API Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_suite:
+        description: 'Test suite to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+        - all
+        - users
+        - brands
+        - favorites
+
+jobs:
+  quick-test:
+    name: Quick API Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install Newman
+      run: npm install -g newman
+      
+    - name: Run Selected Tests
+      run: |
+        case "${{ github.event.inputs.test_suite }}" in
+          "users")
+            echo "Running Users API tests only"
+            newman run tests/users-data-driven-collection.json \
+              -e tests/environment.json \
+              -d tests/users-test-data.csv
+            ;;
+          "brands")
+            echo "Running Brands API tests only"
+            newman run tests/brands-data-driven-collection.json \
+              -e tests/environment.json \
+              -d tests/brands-test-data.csv
+            ;;
+          "favorites")
+            echo "Running Favorites API tests only"
+            newman run tests/favorites-data-driven-collection.json \
+              -e tests/environment.json \
+              -d tests/favorites-test-data.csv
+            ;;
+          "all")
+            echo "Running all API tests"
+            newman run tests/users-data-driven-collection.json \
+              -e tests/environment.json \
+              -d tests/users-test-data.csv \
+              -r cli,json
+            newman run tests/brands-data-driven-collection.json \
+              -e tests/environment.json \
+              -d tests/brands-test-data.csv \
+              -r cli,json
+            newman run tests/favorites-data-driven-collection.json \
+              -e tests/environment.json \
+              -d tests/favorites-test-data.csv \
+              -r cli,json
+            ;;
+        esac

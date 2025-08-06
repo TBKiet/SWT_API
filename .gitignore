@@ -1,0 +1,49 @@
+# IDE files
+.idea/
+.vscode/
+
+# Dependencies
+node_modules/
+
+# Test results and reports
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+reports/*.xml
+reports/*.json
+
+# Quality tools
+.scannerwork/
+mutation.html
+stryker.log
+
+# Sprint folders (if needed)
+sprint5/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+
+# Newman temporary files
+newman-results.xml
+
+# Docker
+.docker/volumes/
+
+# Cache
+.cache/
+.parcel-cache/

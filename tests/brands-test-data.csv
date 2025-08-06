@@ -1,0 +1,11 @@
+brand_id,brand_name,expected_status,test_scenario,description
+1,Apple,200,valid_brand_id,Test with valid brand ID 1
+2,Samsung,200,valid_brand_id,Test with valid brand ID 2
+3,Nike,200,valid_brand_id,Test with valid brand ID 3
+999,NonExistent,404,invalid_brand_id,Test with non-existent brand ID
+-1,InvalidNegative,400,negative_brand_id,Test with negative brand ID
+0,InvalidZero,400,zero_brand_id,Test with zero brand ID
+abc,InvalidString,400,string_brand_id,Test with string instead of number
+1.5,InvalidFloat,400,float_brand_id,Test with float number
+,MissingID,400,missing_brand_id,Test with missing brand ID
+99999,VeryLargeBrand,404,large_brand_id,Test with very large brand ID

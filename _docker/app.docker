@@ -1,0 +1,30 @@
+FROM php:8.3-fpm-alpine
+
+RUN apk add --no-cache mysql-client msmtp perl wget procps shadow libzip libpng libjpeg-turbo libwebp freetype icu su-exec
+
+RUN apk add --no-cache --virtual build-essentials \
+    icu-dev icu-libs zlib-dev g++ make automake autoconf libffi-dev libzip-dev \
+    libpng-dev libwebp-dev libjpeg-turbo-dev freetype-dev && \
+    docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp && \
+    docker-php-ext-configure ffi --with-ffi && \
+    docker-php-ext-install gd && \
+    docker-php-ext-install pdo_mysql && \
+    docker-php-ext-install ffi && \
+    docker-php-ext-install intl && \
+    docker-php-ext-install opcache && \
+    docker-php-ext-install exif && \
+    docker-php-ext-install zip && \
+    apk del build-essentials && rm -rf /usr/src/php*
+
+# Copy configuration
+COPY opcache.ini $PHP_INI_DIR/conf.d/
+COPY php-ini-overrides.ini $PHP_INI_DIR/conf.d/
+
+# Copy entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+RUN usermod -u 1000 www-data
+
+# Set entrypoint (runs as root, then switches to www-data)
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

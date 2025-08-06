@@ -1,0 +1,106 @@
+No.,BugID,Status,Requirement Name,Summary,Steps to reproduce,Severity,Frequency,Priority,Attachment (Link to file),Date,Reporter,Build
+1,BUG_REQ_001,New,API Documentation,Brands API parameter behavior not documented,"1. Send GET request to /brands with any parameter (e.g., ?id=1)
+2. Observe that parameter is ignored
+3. API returns all brands regardless of parameter
+
+Expected: API documentation explaining parameter handling behavior
+Actual: No documentation found for parameter behavior",Text,Always,Low,reports/individual-apis/brands-data-driven-report.html,2025-08-06,Test Automation Team,Sprint5
+2,BUG_VAL_001,New,User Authentication,Login API returns wrong status code for validation errors,"1. Send POST to /users/login with empty email field
+2. Send POST to /users/login with malformed email
+3. Send POST to /users/login with empty password
+4. Expected: 422 Unprocessable Entity for validation errors
+5. Actual: 401 Unauthorized (incorrect status code)",Tweak,Always,Normal,reports/individual-apis/users-data-driven-report.html,2025-08-06,Test Automation Team,Sprint5
+3,BUG_IMP_002,New,API Consistency,Inconsistent error response format across endpoints,"1. Test /users/login endpoint 
+2. Test /favorites endpoint
+3. Compare response structures for error messages
+
+Expected: Consistent error response format across all endpoints
+Actual: /users/login returns {error: 'Unauthorized'}, /favorites returns {message: 'Unauthorized'}",Tweak,Always,Low,reports/individual-apis/users-data-driven-report.html,2025-08-06,Test Automation Team,Sprint5
+4,BUG_SEC_001,New,Security Enhancement,Token case sensitivity inconsistency,"1. Login with valid credentials via /users/login
+2. Observe token_type field in response
+3. Expected: 'Bearer' (standard OAuth2 format)
+4. Actual: 'bearer' (lowercase)
+5. May cause integration issues with OAuth2 clients",Trivial,Always,Low,reports/individual-apis/users-data-driven-report.html,2025-08-06,Test Automation Team,Sprint5
+5,BUG_VAL_002,New,Data Validation,Brands API parameter validation not implemented,"1. Send GET /brands?id=999 (non-existent)
+2. Send GET /brands?id=-1 (invalid negative)
+3. Send GET /brands?id=abc (invalid string)
+4. Expected: 400/404 status codes for invalid parameters
+5. Actual: 200 OK with same brand list (incorrect status code)",Minor,Always,Normal,reports/individual-apis/brands-data-driven-report.html,2025-08-06,Test Automation Team,Sprint5
+6,BUG_DOC_001,New,API Documentation,Missing API endpoint documentation for parameter handling,"1. Review API documentation for /brands endpoint
+2. Check if parameter handling is documented
+3. Verify if ignoring parameters is intended behavior
+
+Expected: Complete API documentation including parameter handling behavior
+Actual: No documentation found for parameter handling in /brands endpoint",Text,Always,Low,N/A,2025-08-06,Test Automation Team,Sprint5
+7,BUG_MON_001,New,Monitoring & Logging,No detailed error logging for failed authentication attempts,"1. Send invalid login requests to /users/login
+2. Check application logs for detailed error information
+3. Verify if failed attempts are properly logged for security monitoring
+
+Expected: Detailed error logging with IP, timestamp, and failure reason for security monitoring
+Actual: Minimal debug information provided, insufficient for security monitoring",Tweak,Always,Normal,reports/individual-apis/users-data-driven-report.html,2025-08-06,Test Automation Team,Sprint5
+8,BUG_ACC_001,New,User Authentication,Locked Account returns wrong status code,"1. Navigate to login page
+2. Enter locked account email (locked@practicesoftwaretesting.com)
+3. Enter valid password (welcome01)
+
+Expected: 423 Locked status code for locked account
+Actual: 400 Bad Request (incorrect status code)",Tweak,Always,Normal,N/A,2025-08-06,Test Automation Team,Sprint5
+9,BUG_SEC_002,New,Invoice Management,Missing Token allows unauthorized access,"1. Attempt login with wrong password
+2. Send GET request to invoices endpoint without valid token
+
+Expected: 401 Unauthorized status code for missing authentication
+Actual: 200 OK - Invoices retrieved (CRITICAL security flaw)",Block,Always,Immediate,N/A,2025-08-06,Test Automation Team,Sprint5
+10,BUG_SEC_003,New,Invoice Management,Expired Token allows unauthorized access,"1. Send GET request to invoices endpoint
+2. Include expired token in Authorization header
+
+Expected: 401 Unauthorized status code for expired token
+Actual: 200 OK - Invoices retrieved (CRITICAL security flaw)",Block,Always,Immediate,N/A,2025-08-06,Test Automation Team,Sprint5
+11,BUG_SEC_004,New,Invoice Management,Invalid Token Format allows unauthorized access,"1. Send GET request to invoices endpoint
+2. Include invalid format token (abc def)
+
+Expected: 401 Unauthorized status code for invalid token format
+Actual: 200 OK - Invoices retrieved (CRITICAL security flaw)",Block,Always,Immediate,N/A,2025-08-06,Test Automation Team,Sprint5
+12,BUG_SEC_005,New,Invoice Management,Malformed Token allows unauthorized access,"1. Send GET request to invoices endpoint
+2. Include malformed token (abc.def.ghi.jkl)
+
+Expected: 401 Unauthorized status code for malformed token
+Actual: 200 OK - Invoices retrieved (CRITICAL security flaw)",Block,Always,Immediate,N/A,2025-08-06,Test Automation Team,Sprint5
+13,BUG_VAL_003,New,Product Management,Empty Description validation incorrect,"1. Send POST request to products endpoint
+2. Include smartphone data without description
+
+Expected: 201 Created (empty description should be allowed)
+Actual: 422 Unprocessable Entity (incorrect validation)",Trivial,Always,Low,N/A,2025-08-06,Test Automation Team,Sprint5
+14,BUG_ERR_001,New,Product Management,Invalid Category returns server error instead of validation error,"1. Send POST request to products endpoint
+2. Include product data with invalid category ID (999)
+
+Expected: 422 Unprocessable Entity for invalid category
+Actual: 500 Internal Server Error (incorrect error handling)",Tweak,Always,Normal,N/A,2025-08-06,Test Automation Team,Sprint5
+15,BUG_ERR_002,New,Product Management,Invalid Brand returns server error instead of validation error,"1. Send POST request to products endpoint
+2. Include product data with invalid brand ID (999)
+
+Expected: 422 Unprocessable Entity for invalid brand
+Actual: 500 Internal Server Error (incorrect error handling)",Tweak,Always,Normal,N/A,2025-08-06,Test Automation Team,Sprint5
+16,BUG_VAL_004,New,Product Management,Special Characters validation too permissive,"1. Send POST request to products endpoint
+2. Include product data with special characters in name
+
+Expected: 422 Unprocessable Entity (should validate special chars)
+Actual: 201 Created (validation too lenient)",Trivial,Always,Low,N/A,2025-08-06,Test Automation Team,Sprint5
+17,BUG_VAL_005,New,User Profile,Phone Number Length validation not enforced,"1. Send PUT request to profile endpoint
+2. Include profile data with phone over 24 characters
+
+Expected: 422 Unprocessable Entity for phone length validation
+Actual: 200 OK (validation not enforced)",Tweak,Always,Normal,N/A,2025-08-06,Test Automation Team,Sprint5
+18,BUG_ERR_003,New,User Profile,Invalid Date Format returns server error,"1. Send PUT request to profile endpoint
+2. Include profile data with invalid date format (31-12-1990)
+
+Expected: 422 Unprocessable Entity for invalid date format
+Actual: 500 Internal Server Error (incorrect error handling)",Tweak,Always,Normal,N/A,2025-08-06,Test Automation Team,Sprint5
+19,BUG_VAL_006,New,User Profile,Future Birth Date validation not enforced,"1. Send PUT request to profile endpoint
+2. Include profile data with future birth date (2030-01-01)
+
+Expected: 422 Unprocessable Entity for future birth date
+Actual: 200 OK (validation not enforced)",Tweak,Always,Normal,N/A,2025-08-06,Test Automation Team,Sprint5
+20,BUG_SEC_006,New,User Profile,SQL Injection vulnerability in profile update,"1. Send PUT request to profile endpoint
+2. Include SQL injection payload in First Name field
+
+Expected: 500 Internal Server Error (safe handling) or 422 Unprocessable Entity
+Actual: 200 OK - Profile updated (CRITICAL SQL injection vulnerability)",Block,Always,Immediate,N/A,2025-08-06,Test Automation Team,Sprint5

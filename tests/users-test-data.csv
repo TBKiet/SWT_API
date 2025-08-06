@@ -1,0 +1,11 @@
+test_scenario,email,password,expected_status,test_description
+valid_admin,admin@practicesoftwaretesting.com,welcome01,200,Admin login with valid credentials
+valid_user,customer@practicesoftwaretesting.com,welcome01,200,Regular user login with valid credentials
+invalid_email,nonexistent@test.com,welcome01,401,Login with non-existent email
+invalid_password,admin@practicesoftwaretesting.com,wrongpass123,401,Login with incorrect password
+empty_email,,welcome01,422,Login with empty email field
+empty_password,customer@practicesoftwaretesting.com,,422,Login with empty password field
+malformed_email,not-an-email,welcome01,422,Login with malformed email format
+sql_injection,admin@test.com' OR '1'='1,password,401,SQL injection attempt in email field
+special_chars_password,customer@practicesoftwaretesting.com,pass@#$%^&*(),401,Password with special characters
+long_email,verylongemailaddressthatexceedsnormallimitsandmightcauseissues@verylongdomainname.com,welcome01,401,Login with extremely long email

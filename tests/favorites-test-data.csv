@@ -1,0 +1,13 @@
+test_scenario,product_id,expected_status,description,auth_header,request_body
+authenticated_valid_product,1,201,Valid user adds valid product to favorites,Bearer {{user_token}},"{""product_id"": 1}"
+authenticated_invalid_product,999999,422,Valid user tries to add non-existent product,Bearer {{user_token}},"{""product_id"": 999999}"
+authenticated_negative_product,-1,422,Valid user tries to add product with negative ID,Bearer {{user_token}},"{""product_id"": -1}"
+authenticated_zero_product,0,422,Valid user tries to add product with ID zero,Bearer {{user_token}},"{""product_id"": 0}"
+authenticated_string_product,abc,422,Valid user tries to add product with string ID,Bearer {{user_token}},"{""product_id"": ""abc""}"
+authenticated_empty_product,,422,Valid user sends empty product_id,Bearer {{user_token}},"{}"
+authenticated_missing_field,,422,Valid user sends missing product_id field,Bearer {{user_token}},"{""other_field"": ""value""}"
+unauthenticated_valid_product,1,401,Unauthenticated request with valid product,,"{""product_id"": 1}"
+invalid_token_valid_product,1,401,Invalid token with valid product,Bearer invalid_token_here,"{""product_id"": 1}"
+security_sql_injection,"1'; DROP TABLE products; --",422,SQL injection attempt in product_id,Bearer {{user_token}},"{""product_id"": ""1'; DROP TABLE products; --""}"
+security_xss_attempt,"<script>alert('xss')</script>",422,XSS attempt in product_id,Bearer {{user_token}},"{""product_id"": ""<script>alert('xss')</script>""}"
+authenticated_float_product,1.5,422,Valid user tries to add product with float ID,Bearer {{user_token}},"{""product_id"": 1.5}"

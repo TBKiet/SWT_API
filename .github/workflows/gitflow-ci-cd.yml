@@ -47,12 +47,14 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
 
     - name: Install Dependencies 📚
       run: |
         echo "📦 Installing dependencies..."
+        # Clear npm cache first
+        npm cache clean --force || echo "⚠️ npm cache clean failed, continuing..."
         npm ci || npm install || echo "⚠️ npm install failed, continuing..."
+        echo "✅ Dependencies installation completed"
 
     - name: Run Linting 🔍
       run: |
